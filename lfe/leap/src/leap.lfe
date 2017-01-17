@@ -15,6 +15,6 @@
     (orelse (not (divisible-by 100 year)) (divisible-by 400 year))))
 
 (defun divisible-by
-  ((module year) (when (=:= 0 (rem year module)))
+  ((modulo year) (when (=:= 0 (rem year modulo)))
     'true)
   ((modulo year) 'false))
