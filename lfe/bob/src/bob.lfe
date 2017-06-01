@@ -4,10 +4,17 @@
 (defmodule bob
   ;(export-macro ends-with)
   (export
+    (what-is-this-char? 1)
     (response-for 1)))
 
 (defun response-for (question)
   (response-for-tail (string:strip question)))
+
+; Iterate over the list, for each char, check if it's symbol, lower, upper, space, ignore...
+; then see if there are 0 lower etc.
+
+(defun do-response-for (question)
+  (lists:each (lambda (c) ) question))
 
 (defun response-for-tail
   (("") "Fine. Be that way!")
@@ -28,3 +35,16 @@
 
 (defun drop-non-alpha-chars (str)
   (re:replace str "[^A-Za-z]" "" (list 'global (tuple 'return 'list))))
+
+(defun what-is-this-char?
+  ((c) (when (upcase? c))
+    'upcase))
+
+(defun upcase? (c)
+  (lists:member c (lists:seq 65 90)))
+
+(defun bobs-answer-for
+  (('question) "Sure.")
+  (('yellilng) "Whoa, chill out!")
+  (('nothing) "Fine. Be that way!")
+  ((other) ("Whatever.")))
