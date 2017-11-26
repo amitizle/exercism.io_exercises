@@ -17,7 +17,7 @@ responseFor xs = case inputType xs of
 
 inputType :: String -> QuestionType
 inputType string | all isSpace sanitisedString = Empty
-            | not (any isLower sanitisedString) && any isAlpha sanitisedString = Yell
-            | (last sanitisedString) == '?' = Question
-            | otherwise = Default
+                 | not (any isLower sanitisedString) && any isAlpha sanitisedString = Yell
+                 | (last sanitisedString) == '?' = Question
+                 | otherwise = Default
   where sanitisedString = filter (/= ' ') string
