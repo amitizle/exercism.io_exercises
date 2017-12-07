@@ -1,18 +1,16 @@
-
 local m = {}
 local factors = {
-  Pling = 3,
-  Plang = 5,
-  Plong = 7
+  {3, "Pling"},
+  {5, "Plang"},
+  {7, "Plong"}
 }
 
-function m.drops(num)
+local drops = function (num)
   local translated = {}
-  for replacement, factor in ipairs(factors) do
-    print(factor, replacement)
-    if num % factor == 0 then
-      print("YAY")
-      translated = table.insert(translated, replacement)
+  for i, factor in ipairs(factors) do
+    local mod, str = table.unpack(factor)
+    if num % mod == 0 then
+      table.insert(translated, str)
     end
   end
   if #translated == 0 then
@@ -22,4 +20,4 @@ function m.drops(num)
   end
 end
 
-return m.drops
+return drops
