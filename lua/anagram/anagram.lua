@@ -19,6 +19,9 @@ function Anagram:new(word)
 end
 
 function Anagram:is_anagram(maybe_anagram)
+  if #maybe_anagram ~= #self.word then
+    return false
+  end
   local lowercase_maybe_anagram = string.lower(maybe_anagram)
   local word_chars = self.word_chars
   local maybe_anagram_chars = Anagram.word_to_chars(lowercase_maybe_anagram)
@@ -29,7 +32,7 @@ function Anagram:is_anagram(maybe_anagram)
       break
     end
   end
-  return chars_count_equal and (#maybe_anagram == #self.word)
+  return chars_count_equal
 end
 
 function Anagram:match(maybe_anagrams)
