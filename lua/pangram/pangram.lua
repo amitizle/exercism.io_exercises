@@ -1,7 +1,7 @@
 
 local function is_pangram(str)
   local alphabet = {}
-  for ascii = 97, 122 do
+  for ascii = string.byte('a'), string.byte('z') do
     alphabet[string.char(ascii)] = 1
   end
   for letter in string.lower(str):gmatch("%w") do

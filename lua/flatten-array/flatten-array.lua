@@ -13,24 +13,22 @@ local function is_array(maybe_array)
   return true
 end
 
+local function flatten_recursive(array, result_table)
+  for _, val in ipairs(array) do
+    if type(val) == "table" then
+      flatten_recursive(val, result_table)
+    else
+      table.insert(result_table, val)
+    end
+  end
+  return result_table
+end
+
 local function flatten(array)
   if not is_array(array) then
     return nil
   end
-  local concatenated = {}
-  if #array == 0 then
-    return {}
-  end
-  for _, item in ipairs(array) do
-    if type(item) == "table" then
-      for _, i in ipairs(flatten(item)) do
-        table.insert(concatenated, i)
-      end
-    else
-      table.insert(concatenated, item)
-    end
-  end
-  return concatenated
+  return flatten_recursive(array, {})
 end
 
 return flatten

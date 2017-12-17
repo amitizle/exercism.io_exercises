@@ -12,7 +12,7 @@ end
 function Anagram:new(word)
   local lowercase_word = string.lower(word)
   local chars = Anagram.word_to_chars(lowercase_word)
-  obj = {word = lowercase_word, word_chars = chars}
+  local obj = {word = lowercase_word, word_chars = chars}
   setmetatable(obj, self)
   self.__index = self
   return obj
